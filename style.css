@@ -1,0 +1,72 @@
+.main-container{
+  background-color: #00bbf0;
+  color:#0d0cb5;
+  font-family: Arial, Helvetica, sans-serif;
+  width:80%;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:20px;
+  padding:8px;
+  border-style: 2px solid #00bbf0;
+ 
+}
+
+
+
+.city{
+padding:6px;
+border-radius:2px;
+border-style:none;
+cursor:pointer;
+background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%); 
+}
+
+
+.search{
+display:inline-block;
+background-color: #0d0cb5;
+color:white;
+padding: 6px;
+border-style:none;
+border-radius:2px;
+cursor:pointer;
+
+}
+
+.search:active{
+background-color:white;
+color:#0d0cb5;
+
+}
+
+.col{
+font-family: 'Lora', serif;
+
+}
+
+.tip{
+font-family: 'Lora', serif;
+font-weight:bold;
+}
+.icons{
+  width:30px;
+
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+  a:hover{
+    text-decoration:underline;
+  
+}
+.temp{
+  font-size:30px;
+}
+.open-source-code {
+text-align:center;
+  
+}
