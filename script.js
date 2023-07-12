@@ -9,7 +9,7 @@ let days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Sat
 let day = days[currentDate.getDay()];
 
 let date = document.querySelector("#date");
-date.innerHTML = `${day} ${hour}:${minutes} `;
+date.innerHTML = `Last updated :${day} ${hour}:${minutes} `;
 
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", handleSubmit);
