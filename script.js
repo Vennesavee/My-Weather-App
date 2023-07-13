@@ -58,12 +58,10 @@ document.querySelector("#description").innerHTML= response.data.condition.descri
 
 
 function getWeather (position){
-  console.log(position);
-
 let latitude =position.coords.latitude;
 let longitude = position.coords.longitude;
 let apiKey = "85cff465ab5546t9e67d063oea6b4af3";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key={key}`;
+let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
 
 axios.get(apiUrl).then(showCityTemperature);
 
