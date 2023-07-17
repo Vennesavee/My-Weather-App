@@ -52,7 +52,7 @@ let temperature = document.querySelector("#temperature");
  let windspeed = Math.round(response.data.wind.speed);
 wind.innerHTML = `Wind :${windspeed} km/h`;
 document.querySelector("#description").innerHTML= response.data.condition.description;
-let icon = document.querySelector(".icons");
+let icon = document.querySelector(".icon-name");
 icon.setAttribute ("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 icon.setAttribute("alt",response.data.condition.icon);
 

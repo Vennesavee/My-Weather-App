@@ -56,9 +56,14 @@ font-family: 'Lora', serif;
 font-family: 'Lora', serif;
 font-weight:bold;
 }
-.icons{
+.icon-name{
   width:120px;
 
+  
+
+}
+.icons{
+  width:40px;
 }
 li{
   list-style: none;
