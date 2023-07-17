@@ -53,9 +53,8 @@ let temperature = document.querySelector("#temperature");
 wind.innerHTML = `Wind :${windspeed} km/h`;
 document.querySelector("#description").innerHTML= response.data.condition.description;
 let icon = document.querySelector(".icons");
-icon.setAttribute ("src","http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png");
-
-
+icon.setAttribute ("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+icon.setAttribute("alt",response.data.condition.icon);
 
 }
 
