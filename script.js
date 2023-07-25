@@ -23,37 +23,31 @@ cityForm.addEventListener("submit", handleSubmit);
 
 
 
-function displayWeatherForecast(){
+function displayWeatherForecast(response){
+  console.log(response.data.daily);
 let forecast = document.querySelector("#weather-forecast");
+
 let forecastHTML =`<div class="row">`;
-forecastHTML = forecastHTML +`
+let days =["Wed","Thu","Fri", "Sat","Sun"];
+days.forEach(function(days){
 
-      <div class="col-2">Wed <br> <img class="icons" src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/084/639/original/cloudy.png?1686045870" alt="">
-      <br>
-        <div class="weather-forecast-temperatures">
-        <span class="weather-forecast-temperature-max">15°</span>/
-        <span class="weather-forecast-temperature-min">10°</span></div>
+  forecastHTML = forecastHTML +`
+
+  <div class="col-2">${days} <br> <img class="icons" src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/084/639/original/cloudy.png?1686045870" alt="">
+  <br>
+    <div class="weather-forecast-temperatures">
+    <span class="weather-forecast-temperature-max">15°</span>/
+    <span class="weather-forecast-temperature-min">10°</span></div>
 
 
-    </div>
+</div>
 
 
 `;
 
-
-forecastHTML = forecastHTML +`
-
-   
-      <div class="col-2">Wed <br> <img class="icons" src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/084/639/original/cloudy.png?1686045870" alt="">
-      <br>
-        <div class="weather-forecast-temperatures">
-        <span class="weather-forecast-temperature-max">15°</span>/
-        <span class="weather-forecast-temperature-min">10°</span></div>
+});
 
 
-    </div>
-
-`;
 forecastHTML =forecastHTML +`</div>`;
 
 forecast.innerHTML = forecastHTML;
@@ -84,6 +78,15 @@ function handleSubmit(event) {
 
 }
 
+function getForecast(coordinates){
+let latitude = coordinates.latitude;
+let longitude = coordinates.longitude;
+let apiKey ="85cff465ab5546t9e67d063oea6b4af3";
+let apiUrl =`https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
+axios.get(apiUrl).then(displayWeatherForecast);
+
+}
+
 function showCityTemperature(response) {
 document.querySelector("#city-name").innerHTML = response.data.city;
 celsiusTemperature = Math.round(response.data.temperature.current);
@@ -99,7 +102,8 @@ document.querySelector("#description").innerHTML= response.data.condition.descri
 let icon = document.querySelector(".icon-name");
 icon.setAttribute ("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 icon.setAttribute("alt",response.data.condition.icon);
-displayWeatherForecast();
+getForecast(response.data.coordinates);
+
 
 }
 
@@ -166,6 +170,7 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
   
 
 searchCity("Sydney");
+
 
 
 
