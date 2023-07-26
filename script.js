@@ -22,28 +22,48 @@ let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", handleSubmit);
 
 
+function formatDay(timestamp){
+
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun","Mon", "Tue", "Wed", "Thur","Fri","Sat"];
+  return days[day];
+
+
+
+
+
+
+}
+
+
 
 function displayWeatherForecast(response){
   console.log(response.data.daily);
+  
+let weatherForecast = response.data.daily;
 let forecast = document.querySelector("#weather-forecast");
 
 let forecastHTML =`<div class="row">`;
-let days =["Wed","Thu","Fri", "Sat","Sun"];
-days.forEach(function(days){
+weatherForecast.forEach(function(forecastDay, index){
+  if(index <6 ){
+console.log(forecastDay.condition.icon);
+
 
   forecastHTML = forecastHTML +`
 
-  <div class="col-2">${days} <br> <img class="icons" src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/084/639/original/cloudy.png?1686045870" alt="">
+  <div class="col-2">${formatDay(forecastDay.time)} <br> <img class="icons" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="">
   <br>
     <div class="weather-forecast-temperatures">
-    <span class="weather-forecast-temperature-max">15°</span>/
-    <span class="weather-forecast-temperature-min">10°</span></div>
+    <span class="weather-forecast-temperature-max">${Math.round(forecastDay.temperature.maximum)}°</span>/
+    <span class="weather-forecast-temperature-min">${Math.round(forecastDay.temperature.minimum)}°</span></div>
 
 
 </div>
 
 
 `;
+  }
 
 });
 
