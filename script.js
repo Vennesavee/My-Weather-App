@@ -30,16 +30,11 @@ function formatDay(timestamp){
   return days[day];
 
 
-
-
-
-
 }
 
 
 
 function displayWeatherForecast(response){
-  console.log(response.data.daily);
   
 let weatherForecast = response.data.daily;
 let forecast = document.querySelector("#weather-forecast");
@@ -47,7 +42,7 @@ let forecast = document.querySelector("#weather-forecast");
 let forecastHTML =`<div class="row">`;
 weatherForecast.forEach(function(forecastDay, index){
   if(index <6 ){
-console.log(forecastDay.condition.icon);
+
 
 
   forecastHTML = forecastHTML +`
@@ -112,18 +107,17 @@ document.querySelector("#city-name").innerHTML = response.data.city;
 celsiusTemperature = Math.round(response.data.temperature.current);
 let temperature = document.querySelector("#temperature");
  
- temperature.innerHTML = `${celsiusTemperature}`;
+temperature.innerHTML = `${celsiusTemperature}`;
 
- document.querySelector("#humidity").innerHTML = `Humidity :${response.data.temperature.humidity}%`;
- let wind = document.querySelector("#wind");
- let windspeed = Math.round(response.data.wind.speed);
+document.querySelector("#humidity").innerHTML = `Humidity :${response.data.temperature.humidity}%`;
+let wind = document.querySelector("#wind");
+let windspeed = Math.round(response.data.wind.speed);
 wind.innerHTML = `Wind :${windspeed} km/h`;
 document.querySelector("#description").innerHTML= response.data.condition.description;
 let icon = document.querySelector(".icon-name");
 icon.setAttribute ("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 icon.setAttribute("alt",response.data.condition.icon);
 getForecast(response.data.coordinates);
-
 
 }
 
@@ -135,7 +129,6 @@ let apiKey = "85cff465ab5546t9e67d063oea6b4af3";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
 
 axios.get(apiUrl).then(showCityTemperature);
-
 
   
 }
